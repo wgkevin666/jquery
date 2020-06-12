@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>event</title>
+</head>
+<body>
+    <!-- 方法一 HTML 屬性事件-->
+    <h1 onclick="f1(event);">方法一</h1>
+
+    <!-- 方法二 JavaScript 屬性事件-->
+    <h1 id="m2">方法二</h1>
+
+    <!-- 方法三 W3C 事件-->
+    <h1 id="m3">方法三</h1>
+
+    <script>
+        function f1(evt){
+            // alert("method 1"+evt.type);
+            alert(evt.type);
+        }
+
+        function f2(evt){
+            // alert("method 2");
+            alert(evt.button);  //0
+        }
+
+        function f3(){
+            alert("method 3");
+        }
+        
+        document.querySelector("#m2").onclick=f2;  //() calling 立即執行 註冊  綁定  繫結(binding)
+        document.querySelector("#m2").onclick=function(evt){
+            // alert("method 2x");
+            alert(evt.button);
+        }
+        document.querySelector("#m3").addEventListener("click",f3,false);//method default false
+        document.querySelector("#m3").addEventListener("click",function (){
+            alert("method 3x");
+        },false);
+    </script>
+</body>
+</html>
